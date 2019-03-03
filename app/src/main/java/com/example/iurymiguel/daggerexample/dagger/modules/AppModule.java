@@ -1,6 +1,7 @@
 package com.example.iurymiguel.daggerexample.dagger.modules;
 
 import com.example.iurymiguel.daggerexample.models.Person;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -8,7 +9,17 @@ import dagger.Provides;
 public class AppModule {
 
     @Provides
-    public Person providePerson() {
-        return new Person();
+    public String provideDefaultName() {
+        return "Iury";
+    }
+
+    @Provides
+    public int provideDefaultAge() {
+        return 23;
+    }
+
+    @Provides
+    public Person providePerson(String name, int age) {
+        return new Person(name, age);
     }
 }
