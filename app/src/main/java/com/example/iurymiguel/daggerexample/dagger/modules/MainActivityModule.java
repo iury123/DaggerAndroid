@@ -9,6 +9,7 @@ import dagger.android.AndroidInjector;
 import dagger.multibindings.ClassKey;
 import dagger.multibindings.IntoMap;
 
+// Only used in classic way.
 @Module(subcomponents = { MainActivitySubcomponent.class })
 public abstract class MainActivityModule {
     @Binds

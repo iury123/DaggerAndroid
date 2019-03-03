@@ -1,20 +1,30 @@
 package com.example.iurymiguel.daggerexample.application;
 
-import android.app.Activity;
-import android.app.Application;
-
 import com.example.iurymiguel.daggerexample.dagger.components.DaggerAppComponent;
 
-import javax.inject.Inject;
-
 import dagger.android.AndroidInjector;
-import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasActivityInjector;
+import dagger.android.DaggerApplication;
 
-public class MyApplication extends Application implements HasActivityInjector {
+public class MyApplication extends DaggerApplication {
+
+    @Override
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        return DaggerAppComponent
+                .builder()
+                .application(this)
+                .build();
+    }
+}
+
+
+/*
+    //Classic way
+
+    // MyApplication extending Application and implementing HasActivityInjector.
 
     @Inject
     public DispatchingAndroidInjector<Activity> activityInjector;
+
 
     @Override
     public void onCreate() {
@@ -26,4 +36,4 @@ public class MyApplication extends Application implements HasActivityInjector {
     public AndroidInjector<Activity> activityInjector() {
         return activityInjector;
     }
-}
+*/
