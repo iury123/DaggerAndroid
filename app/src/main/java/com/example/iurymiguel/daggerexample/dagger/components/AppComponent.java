@@ -37,8 +37,10 @@ public interface AppComponent {
 public interface AppComponent extends AndroidInjector<MyApplication> {
     @Component.Builder
     interface Builder {
+
         @BindsInstance
         AppComponent.Builder application(Application application);
+
         AppComponent build();
     }
 }
